@@ -10,7 +10,6 @@ import json
 # Import the users Blueprint correctly
 from services.disaster import disaster
 
-    
 class JSONEncoder(json.JSONEncoder):
     print('JSONEncoder')
     def default(self, o):
