@@ -1,18 +1,24 @@
 import pandas as pd
-from pymongo import MongoClient
 import json
 from db import db
+from pymongo import MongoClient
 
 def mongoimport(csv_path, coll_name):
-    """ Imports a csv file at path csv_name to a mongo colection
-    returns: count of the documants in the new collection
+    """Imports a CSV file at path csv_name to a MongoDB collection.
+    Returns: count of the documents in the new collection.
     """
+    mongo_uri = "mongoUri"
+    client = MongoClient(mongo_uri)
+    db = client["data"]
+    
     coll = db[coll_name]
     data = pd.read_csv(csv_path)
     payload = json.loads(data.to_json(orient='records'))
-    coll.remove()
-    coll.insert(payload)
-    return coll.count()
+    coll.delete_many({})
+    coll.insert_many(payload)
+    return coll.count_documents({})
 
-
-mongoimport('data.csv', 'disaster')
+if __name__ == "__main__":
+    csv_path = './dataset/DisasterDataset.csv'
+    collection_name = 'disaster'
+    print(f"Number of documents in {collection_name}: {mongoimport(csv_path, collection_name)}")
