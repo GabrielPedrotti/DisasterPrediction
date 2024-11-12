@@ -53,8 +53,12 @@ X_test_processed = pd.concat([X_test_encoded, X_test_scaled], axis=1)
 X_train_processed.columns = X_train_processed.columns.astype(str)
 X_test_processed.columns = X_test_processed.columns.astype(str)
 
-# load the model
-model = joblib.load('./model/model.pkl')
+# comment out the model creation if you want to load the model
+model = RandomForestClassifier(random_state=42)
+model.fit(X_train_processed, y_train)
+
+# load the model, if created already
+# model = joblib.load('./model/model.pkl')
 
 y_pred = model.predict(X_test_processed)
 
