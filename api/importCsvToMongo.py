@@ -1,6 +1,5 @@
 import pandas as pd
 import json
-from db import db
 from pymongo import MongoClient
 
 def mongoimport(csv_path, coll_name):

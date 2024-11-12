@@ -3,3 +3,5 @@ Werkzeug==2.2.2
 pymongo[srv]
 Flask-PyMongo
 flask_cors
+pandas
+scikit-learn
