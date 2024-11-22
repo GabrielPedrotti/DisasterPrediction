@@ -13,4 +13,9 @@ def get_all_disasters():
     disasters = db.disaster.find()
     return jsonify([disaster for disaster in disasters])
 
+@disaster.route('/<id>', methods=['GET'])
+def get_disaster(id):
+    disaster = db.disaster.find_one({'_id': ObjectId(id)})
+    return jsonify(disaster)
+
 
