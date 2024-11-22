@@ -9,6 +9,7 @@ import json
 
 # Import the users Blueprint correctly
 from services.disaster import disaster
+from services.model import model
 
 class JSONEncoder(json.JSONEncoder):
     print('JSONEncoder')
@@ -37,6 +38,7 @@ def create_app():
     CORS(app)
     app.json_encoder = MongoJsonEncoder
     app.register_blueprint(disaster)
+    app.register_blueprint(model)
 
 
     @app.route('/', defaults={'path': ''})

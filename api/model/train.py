@@ -24,9 +24,7 @@ print('isnull ------> ', data.isnull().sum())
 X = data.drop(columns=['incidentType', '_id'])
 y = data['incidentType']
 
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
 
 categorical_cols = ['state', 'declarationType', 'designatedArea']
 
@@ -53,11 +51,11 @@ X_test_processed = pd.concat([X_test_encoded, X_test_scaled], axis=1)
 X_train_processed.columns = X_train_processed.columns.astype(str)
 X_test_processed.columns = X_test_processed.columns.astype(str)
 
-# comment out the model creation if you want to load the model
+# comente caso queira usar o modelo salvo
 model = RandomForestClassifier(random_state=42)
 model.fit(X_train_processed, y_train)
 
-# load the model, if created already
+# carrega o modelo treinado
 # model = joblib.load('./model/model.pkl')
 
 y_pred = model.predict(X_test_processed)
@@ -84,6 +82,8 @@ test_score = model.score(X_test_processed, y_test)
 print(f"Train score: {train_score}")
 print(f"Test score: {test_score}")
 
-# Save the model (uncomment if needed)
-# joblib.dump(model, './model/model.pkl')
-# print('Model saved as model.pkl')
+# salvar o modelo treinado
+joblib.dump(model, './model/model.pkl')
+joblib.dump(enc, './model/encoder.pkl')
+joblib.dump(scaler, './model/scaler.pkl')
+print('Model saved as model.pkl')
