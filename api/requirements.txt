@@ -5,3 +5,4 @@ Flask-PyMongo
 flask_cors
 pandas
 scikit-learn
+joblib

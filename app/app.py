@@ -13,9 +13,10 @@ states_json = "states.json"
 with open(states_json, "r", encoding="utf-8") as file:
     states = json.load(file)
 
-def mount_charts_data(selected_year):
+def mount_charts_data(selected_year, selected_incident, selected_state):
+    # TODO: the above data needs to dynamic
     teste = {
-        "state": "TX",
+        "state": selected_state,
         "declarationType": "DR",
         "designatedArea": "Some Area",
         "fipsStateCode": 48,
@@ -31,7 +32,7 @@ def mount_charts_data(selected_year):
         "iaProgramDeclared": 0,
         "paProgramDeclared": 1,
         "hmProgramDeclared": 0,
-        "incidentType": "Flood"
+        "incidentType": selected_incident
     }
     
     url = "http://127.0.0.1:5000/api/v1/model/predict"
@@ -70,8 +71,27 @@ app.layout = html.Div([
     dcc.Dropdown(
         id="year-dropdown",
         options=[{"label": year, "value": year} for year in years],
-        value=str(current_year),  
+        value=None,
         placeholder="Selecione o ano"
+    ),
+    
+    dcc.Dropdown(
+        id="incident-dropdown",
+        options=[
+            {"label": "Flood", "value": "Flood"},
+            {"label": "Hurricane", "value": "Hurricane"},
+            {"label": "Tornado", "value": "Tornado"},
+            {"label": "Wildfire", "value": "Wildfire"}
+        ],
+        value=None,
+        placeholder="Selecione o tipo de incidente"
+    ),
+    
+    dcc.Dropdown(
+        id="state-dropdown",
+        options=[{"label": state["name"], "value": state["abbreviation"]} for state in states],
+        value=None,
+        placeholder="Selecione o estado"
     ),
     
     dcc.Graph(id="incident-map")
@@ -79,10 +99,21 @@ app.layout = html.Div([
 
 @app.callback(
     [Output("incident-map", "figure")],
-    [Input("year-dropdown", "value")]
+    [
+        Input("year-dropdown", "value"),
+        Input("incident-dropdown", "value"),
+        Input("state-dropdown", "value")
+    ]
 )
-def update_graphs(selected_year):
-    df = mount_charts_data(selected_year)
+def update_graphs(selected_year, selected_incident, selected_state):
+    if not all([selected_year, selected_incident, selected_state]):
+        empty_fig = px.scatter_geo(
+            title="Aguardando seleção de todos os campos...",
+            scope="usa"
+        )
+        return empty_fig 
+
+    df = mount_charts_data(selected_year, selected_incident, selected_state)
 
     filtered_df = df[df["Year"] == int(selected_year)] 
 
