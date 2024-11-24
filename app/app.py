@@ -14,8 +14,7 @@ with open(states_json, "r", encoding="utf-8") as file:
     states = json.load(file)
 
 def mount_charts_data(selected_year, selected_incident, selected_state):
-    # TODO: the above data needs to dynamic
-    teste = {
+    data_to_predict = {
         "state": selected_state,
         "declarationType": "DR",
         "designatedArea": "Some Area",
@@ -36,22 +35,22 @@ def mount_charts_data(selected_year, selected_incident, selected_state):
     }
     
     url = "http://127.0.0.1:5000/api/v1/model/predict"
-    request = requests.request("POST", url, headers={'Content-Type': 'application/json'}, json=teste)
+    request = requests.request("POST", url, headers={'Content-Type': 'application/json'}, json=data_to_predict)
     data = request.json()
 
-    stateData = next((state for state in states if state["abbreviation"] == teste["state"]), {})
+    stateData = next((state for state in states if state["abbreviation"] == data_to_predict["state"]), {})
 
     aggregated = {
-        "state": [teste["state"]],
-        "declarationType": [teste["declarationType"]],
-        "Tipo de Incidente": [teste["incidentType"]],
-        "Precipitação": [teste["Precipitation"]],
-        "Cooling_Days": [teste["Cooling_Days"]],
-        "Heating_Days": [teste["Heating_Days"]],
-        "Temperatura Média": [teste["AverageTemp"]],
-        "Real": [teste["incidentType"]],
-        "Predicted": [teste["incidentType"]],
-        "Year": [teste["year"]],
+        "state": [data_to_predict["state"]],
+        "declarationType": [data_to_predict["declarationType"]],
+        "Tipo de Incidente": [data_to_predict["incidentType"]],
+        "Precipitação": [data_to_predict["Precipitation"]],
+        "Cooling_Days": [data_to_predict["Cooling_Days"]],
+        "Heating_Days": [data_to_predict["Heating_Days"]],
+        "Temperatura Média": [data_to_predict["AverageTemp"]],
+        "Real": [data_to_predict["incidentType"]],
+        "Predicted": [data_to_predict["incidentType"]],
+        "Year": [data_to_predict["year"]],
         "Latitude": [stateData.get("latitude")],  
         "Longitude": [stateData.get("longitude")],
         "Predição": [data.get("prediction")]
@@ -78,7 +77,7 @@ app.layout = html.Div([
     dcc.Dropdown(
         id="incident-dropdown",
         options=[
-            {"label": "Flood", "value": "Flood"},
+            {"label": "Severe Storm", "value": "Severe Storm"},
             {"label": "Hurricane", "value": "Hurricane"},
             {"label": "Tornado", "value": "Tornado"},
             {"label": "Wildfire", "value": "Wildfire"}
