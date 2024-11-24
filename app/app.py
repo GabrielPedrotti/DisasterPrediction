@@ -134,7 +134,7 @@ app.layout = html.Div([
 def update_graphs(n_clicks, selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp):
     if n_clicks == 0 or not all([selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp]):
         empty_fig = px.scatter_geo(
-            title="Aguardando clique no botão ou seleção de todos os campos...",
+            title="Mapa dos Estados Unidos:",
             scope="usa"
         )
         return [empty_fig]
