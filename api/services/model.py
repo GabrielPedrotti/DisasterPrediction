@@ -10,6 +10,13 @@ trainedModel = joblib.load('./model/model.pkl')
 encoder = joblib.load('./model/encoder.pkl')
 scaler = joblib.load('./model/scaler.pkl')
 
+'''
+    ihProgramDeclared: assistência a afetados por desastres
+    iaProgramDeclared: inclui o IHP e outros auxílios, como aconselhamento em crises, assistência ao desemprego
+    paProgramDeclared: suporte financeiro a governos locais, tribos reconhecidas federalmente e algumas organizações sem fins lucrativos
+    hmProgramDeclared: subsídios que ajuda comunidades a reduzir ou eliminar os riscos futuros causados por desastres
+'''
+
 @model.route('/predict', methods=['POST'])
 def predict():
     try:

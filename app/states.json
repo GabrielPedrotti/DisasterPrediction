@@ -1,402 +1,602 @@
 [
-    {
-      "name": "Alabama",
-      "abbreviation": "AL",
-      "latitude": "32.31823140",
-      "longitude": "-86.90229800",
-      "timezones": ["CST (UTC-6)", "EST (UTC-5)"],
-      "ianaTimezones": ["US/Central", "US/Eastern"]
-    },
-    {
-      "name": "Alaska",
-      "abbreviation": "AK",
-      "latitude": "64.20084130",
-      "longitude": "-149.49367330",
-      "timezones": ["AKST (UTC-09)", "HST/HDT (UTC-10)"],
-      "ianaTimezones": ["US/Alaska", "US/Aleutian"]
-    },
-    {
-      "name": "Arizona",
-      "abbreviation": "AZ",
-      "latitude": "34.04892810",
-      "longitude": "-111.09373110",
-      "timezones": ["MST (UTC-07)", "MST/MDT (UTC-07)"],
-      "ianaTimezones": ["US/Arizona", "US/Mountain"]
-    },
-    {
-      "name": "Arkansas",
-      "abbreviation": "AR",
-      "latitude": "35.20105000",
-      "longitude": "-91.83183340",
-      "timezones": ["CST (UTC-6)"],
-      "ianaTimezones": ["US/Central"]
-    },
-    {
-      "name": "California",
-      "abbreviation": "CA",
-      "latitude": "36.77826100",
-      "longitude": "-119.41793240",
-      "timezones": ["PST (UTC-8)"],
-      "ianaTimezones": ["US/Pacific"]
-    },
-    {
-      "name": "Colorado",
-      "abbreviation": "CO",
-      "latitude": "39.55005070",
-      "longitude": "-105.78206740",
-      "timezones": ["MST (UTC-07)"],
-      "ianaTimezones": ["US/Mountain"]
-    },
-    {
-      "name": "Connecticut",
-      "abbreviation": "CT",
-      "latitude": "41.60322070",
-      "longitude": "-73.08774900",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "Delaware",
-      "abbreviation": "DE",
-      "latitude": "38.91083250",
-      "longitude": "-75.52766990",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "Florida",
-      "abbreviation": "FL",
-      "latitude": "27.66482740",
-      "longitude": "-81.51575350",
-      "timezones": ["EST (UTC-5)", "CST (UTC-6)"],
-      "ianaTimezones": ["US/Eastern", "US/Central"]
-    },
-    {
-      "name": "Georgia",
-      "abbreviation": "GA",
-      "latitude": "32.16562210",
-      "longitude": "-82.90007510",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "Hawaii",
-      "abbreviation": "HI",
-      "latitude": "19.89676620",
-      "longitude": "-155.58278180",
-      "timezones": ["HAST (UTC-10)"],
-      "ianaTimezones": ["US/Hawaii"]
-    },
-    {
-      "name": "Idaho",
-      "abbreviation": "ID",
-      "latitude": "44.06820190",
-      "longitude": "-114.74204080",
-      "timezones": ["MST (UTC-07)", "PST (UTC-8)"],
-      "ianaTimezones": ["US/Mountain", "US/Pacific"]
-    },
-    {
-      "name": "Illinois",
-      "abbreviation": "IL",
-      "latitude": "40.63312490",
-      "longitude": "-89.39852830",
-      "timezones": ["CST (UTC-6)"],
-      "ianaTimezones": ["US/Central"]
-    },
-    {
-      "name": "Indiana",
-      "abbreviation": "IN",
-      "latitude": "40.26719410",
-      "longitude": "-86.13490190",
-      "timezones": ["EST (UTC-5)", "CST (UTC-6)"],
-      "ianaTimezones": ["US/Eastern", "US/Central"]
-    },
-    {
-      "name": "Iowa",
-      "abbreviation": "IA",
-      "latitude": "41.87800250",
-      "longitude": "-93.09770200",
-      "timezones": ["CST (UTC-6)"],
-      "ianaTimezones": ["US/Central"]
-    },
-    {
-      "name": "Kansas",
-      "abbreviation": "KS",
-      "latitude": "39.01190200",
-      "longitude": "-98.48424650",
-      "timezones": ["CST (UTC-6)", "MST (UTC-07)"],
-      "ianaTimezones": ["US/Central", "US/Mountain"]
-    },
-    {
-      "name": "Kentucky",
-      "abbreviation": "KY",
-      "latitude": "37.83933320",
-      "longitude": "-84.27001790",
-      "timezones": ["EST (UTC-5)", "CST (UTC-6)"],
-      "ianaTimezones": ["US/Eastern", "US/Central"]
-    },
-    {
-      "name": "Louisiana",
-      "abbreviation": "LA",
-      "latitude": "30.98429770",
-      "longitude": "-91.96233270",
-      "timezones": ["CST (UTC-6)"],
-      "ianaTimezones": ["US/Central"]
-    },
-    {
-      "name": "Maine",
-      "abbreviation": "ME",
-      "latitude": "45.25378300",
-      "longitude": "-69.44546890",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "Maryland",
-      "abbreviation": "MD",
-      "latitude": "39.04575490",
-      "longitude": "-76.64127120",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "Massachusetts",
-      "abbreviation": "MA",
-      "latitude": "42.40721070",
-      "longitude": "-71.38243740",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "Michigan",
-      "abbreviation": "MI",
-      "latitude": "44.31484430",
-      "longitude": "-85.60236430",
-      "timezones": ["EST (UTC-5)", "CST (UTC-6)"],
-      "ianaTimezones": ["US/Eastern", "US/Central"]
-    },
-    {
-      "name": "Minnesota",
-      "abbreviation": "MN",
-      "latitude": "46.72955300",
-      "longitude": "-94.68589980",
-      "timezones": ["CST (UTC-6)"],
-      "ianaTimezones": ["US/Central"]
-    },
-    {
-      "name": "Mississippi",
-      "abbreviation": "MS",
-      "latitude": "32.35466790",
-      "longitude": "-89.39852830",
-      "timezones": ["CST (UTC-6)"],
-      "ianaTimezones": ["US/Central"]
-    },
-    {
-      "name": "Missouri",
-      "abbreviation": "MO",
-      "latitude": "37.96425290",
-      "longitude": "-91.83183340",
-      "timezones": ["CST (UTC-6)"],
-      "ianaTimezones": ["US/Central"]
-    },
-    {
-      "name": "Montana",
-      "abbreviation": "MT",
-      "latitude": "46.87968220",
-      "longitude": "-110.36256580",
-      "timezones": ["MST (UTC-07)"],
-      "ianaTimezones": ["US/Mountain"]
-    },
-    {
-      "name": "Nebraska",
-      "abbreviation": "NE",
-      "latitude": "41.49253740",
-      "longitude": "-99.90181310",
-      "timezones": ["CST (UTC-6)", "MST (UTC-07)"],
-      "ianaTimezones": ["US/Central", "US/Mountain"]
-    },
-    {
-      "name": "Nevada",
-      "abbreviation": "NV",
-      "latitude": "38.80260970",
-      "longitude": "-116.41938900",
-      "timezones": ["PST (UTC-8)", "MST (UTC-07)"],
-      "ianaTimezones": ["US/Pacific", "US/Mountain"]
-    },
-    {
-      "name": "New Hampshire",
-      "abbreviation": "NH",
-      "latitude": "43.19385160",
-      "longitude": "-71.57239530",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "New Jersey",
-      "abbreviation": "NJ",
-      "latitude": "40.05832380",
-      "longitude": "-74.40566120",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "New Mexico",
-      "abbreviation": "NM",
-      "latitude": "34.51994020",
-      "longitude": "-105.87009010",
-      "timezones": ["MST (UTC-07)"],
-      "ianaTimezones": ["US/Mountain"]
-    },
-    {
-      "name": "New York",
-      "abbreviation": "NY",
-      "latitude": "40.71277530",
-      "longitude": "-74.00597280",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "North Carolina",
-      "abbreviation": "NC",
-      "latitude": "35.75957310",
-      "longitude": "-79.01929970",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "North Dakota",
-      "abbreviation": "ND",
-      "latitude": "47.55149260",
-      "longitude": "-101.00201190",
-      "timezones": ["CST (UTC-6)", "MST (UTC-07)"],
-      "ianaTimezones": ["US/Central", "US/Mountain"]
-    },
-    {
-      "name": "Ohio",
-      "abbreviation": "OH",
-      "latitude": "40.41728710",
-      "longitude": "-82.90712300",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "Oklahoma",
-      "abbreviation": "OK",
-      "latitude": "35.46756020",
-      "longitude": "-97.51642760",
-      "timezones": ["CST (UTC-6)"],
-      "ianaTimezones": ["US/Central"]
-    },
-    {
-      "name": "Oregon",
-      "abbreviation": "OR",
-      "latitude": "43.80413340",
-      "longitude": "-120.55420120",
-      "timezones": ["PST (UTC-8)", "MST (UTC-07)"],
-      "ianaTimezones": ["US/Pacific", "US/Mountain"]
-    },
-    {
-      "name": "Pennsylvania",
-      "abbreviation": "PA",
-      "latitude": "41.20332160",
-      "longitude": "-77.19452470",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "Rhode Island",
-      "abbreviation": "RI",
-      "latitude": "41.58009450",
-      "longitude": "-71.47742910",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "South Carolina",
-      "abbreviation": "SC",
-      "latitude": "33.83608100",
-      "longitude": "-81.16372450",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "South Dakota",
-      "abbreviation": "SD",
-      "latitude": "43.96951480",
-      "longitude": "-99.90181310",
-      "timezones": ["CST (UTC-6)", "MST (UTC-07)"],
-      "ianaTimezones": ["US/Central", "US/Mountain"]
-    },
-    {
-      "name": "Tennessee",
-      "abbreviation": "TN",
-      "latitude": "35.51749130",
-      "longitude": "-86.58044730",
-      "timezones": ["CST (UTC-6)", "EST (UTC-5)"],
-      "ianaTimezones": ["US/Central", "US/Eastern"]
-    },
-    {
-      "name": "Texas",
-      "abbreviation": "TX",
-      "latitude": "31.96859880",
-      "longitude": "-99.90181310",
-      "timezones": ["CST (UTC-6)", "MST (UTC-07)"],
-      "ianaTimezones": ["US/Central", "US/Mountain"]
-    },
-    {
-      "name": "Utah",
-      "abbreviation": "UT",
-      "latitude": "39.32098010",
-      "longitude": "-111.09373110",
-      "timezones": ["MST (UTC-07)"],
-      "ianaTimezones": ["US/Mountain"]
-    },
-    {
-      "name": "Vermont",
-      "abbreviation": "VT",
-      "latitude": "44.55880280",
-      "longitude": "-72.57784150",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "Virginia",
-      "abbreviation": "VA",
-      "latitude": "37.43157340",
-      "longitude": "-78.65689420",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "Washington",
-      "abbreviation": "WA",
-      "latitude": "47.75107410",
-      "longitude": "-120.74013850",
-      "timezones": ["PST (UTC-8)"],
-      "ianaTimezones": ["US/Pacific"]
-    },
-    {
-      "name": "West Virginia",
-      "abbreviation": "WV",
-      "latitude": "38.59762620",
-      "longitude": "-80.45490260",
-      "timezones": ["EST (UTC-5)"],
-      "ianaTimezones": ["US/Eastern"]
-    },
-    {
-      "name": "Wisconsin",
-      "abbreviation": "WI",
-      "latitude": "43.78443970",
-      "longitude": "-88.78786780",
-      "timezones": ["CST (UTC-6)"],
-      "ianaTimezones": ["US/Central"]
-    },
-    {
-      "name": "Wyoming",
-      "abbreviation": "WY",
-      "latitude": "43.07596780",
-      "longitude": "-107.29028390",
-      "timezones": ["MST (UTC-07)"],
-      "ianaTimezones": ["US/Mountain"]
-    }
-  ]
+  {
+    "name": "Alabama",
+    "abbreviation": "AL",
+    "latitude": "32.31823140",
+    "longitude": "-86.90229800",
+    "timezones": ["CST (UTC-6)", "EST (UTC-5)"],
+    "ianaTimezones": ["US/Central", "US/Eastern"],
+    "designatedArea": "Montgomery County",
+    "fipsStateCode": "01",
+    "fipsCountyCode": "101",
+    "combinedFIPS": "01101"
+  },
+  {
+    "name": "Alaska",
+    "abbreviation": "AK",
+    "latitude": "64.20084130",
+    "longitude": "-149.49367330",
+    "timezones": ["AKST (UTC-09)", "HST/HDT (UTC-10)"],
+    "ianaTimezones": ["US/Alaska", "US/Aleutian"],
+    "designatedArea": "Juneau City and Borough",
+    "fipsStateCode": "02",
+    "fipsCountyCode": "110",
+    "combinedFIPS": "02110"
+  },
+  {
+    "name": "Arizona",
+    "abbreviation": "AZ",
+    "latitude": "34.04892810",
+    "longitude": "-111.09373110",
+    "timezones": ["MST (UTC-07)", "MST/MDT (UTC-07)"],
+    "ianaTimezones": ["US/Arizona", "US/Mountain"],
+    "designatedArea": "Maricopa County",
+    "fipsStateCode": "04",
+    "fipsCountyCode": "013",
+    "combinedFIPS": "04013"
+  },
+  {
+    "name": "Arkansas",
+    "abbreviation": "AR",
+    "latitude": "35.20105000",
+    "longitude": "-91.83183340",
+    "timezones": ["CST (UTC-6)"],
+    "ianaTimezones": ["US/Central"],
+    "designatedArea": "Pulaski County",
+    "fipsStateCode": "05",
+    "fipsCountyCode": "119",
+    "combinedFIPS": "05119"
+  },
+  {
+    "name": "California",
+    "abbreviation": "CA",
+    "latitude": "36.77826100",
+    "longitude": "-119.41793240",
+    "timezones": ["PST (UTC-8)"],
+    "ianaTimezones": ["US/Pacific"],
+    "designatedArea": "Sacramento County",
+    "fipsStateCode": "06",
+    "fipsCountyCode": "067",
+    "combinedFIPS": "06067"
+  },
+  {
+    "name": "Colorado",
+    "abbreviation": "CO",
+    "latitude": "39.55005070",
+    "longitude": "-105.78206740",
+    "timezones": ["MST (UTC-07)"],
+    "ianaTimezones": ["US/Mountain"],
+    "designatedArea": "Denver County",
+    "fipsStateCode": "08",
+    "fipsCountyCode": "031",
+    "combinedFIPS": "08031"
+  },
+  {
+    "name": "Connecticut",
+    "abbreviation": "CT",
+    "latitude": "41.60322070",
+    "longitude": "-73.08774900",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Hartford County",
+    "fipsStateCode": "09",
+    "fipsCountyCode": "003",
+    "combinedFIPS": "09003"
+  },
+  {
+    "name": "Delaware",
+    "abbreviation": "DE",
+    "latitude": "38.91083250",
+    "longitude": "-75.52766990",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Kent County",
+    "fipsStateCode": "10",
+    "fipsCountyCode": "001",
+    "combinedFIPS": "10001"
+  },
+  {
+    "name": "Florida",
+    "abbreviation": "FL",
+    "latitude": "27.66482740",
+    "longitude": "-81.51575350",
+    "timezones": ["EST (UTC-5)", "CST (UTC-6)"],
+    "ianaTimezones": ["US/Eastern", "US/Central"],
+    "designatedArea": "Leon County",
+    "fipsStateCode": "12",
+    "fipsCountyCode": "073",
+    "combinedFIPS": "12073"
+  },
+  {
+    "name": "Georgia",
+    "abbreviation": "GA",
+    "latitude": "32.16562210",
+    "longitude": "-82.90007510",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Fulton County",
+    "fipsStateCode": "13",
+    "fipsCountyCode": "121",
+    "combinedFIPS": "13121"
+  },
+  {
+    "name": "Hawaii",
+    "abbreviation": "HI",
+    "latitude": "19.89676620",
+    "longitude": "-155.58278180",
+    "timezones": ["HAST (UTC-10)"],
+    "ianaTimezones": ["US/Hawaii"],
+    "designatedArea": "Honolulu County",
+    "fipsStateCode": "15",
+    "fipsCountyCode": "003",
+    "combinedFIPS": "15003"
+  },
+  {
+    "name": "Idaho",
+    "abbreviation": "ID",
+    "latitude": "44.06820190",
+    "longitude": "-114.74204080",
+    "timezones": ["MST (UTC-07)", "PST (UTC-8)"],
+    "ianaTimezones": ["US/Mountain", "US/Pacific"],
+    "designatedArea": "Ada County",
+    "fipsStateCode": "16",
+    "fipsCountyCode": "001",
+    "combinedFIPS": "16001"
+  },
+  {
+    "name": "Illinois",
+    "abbreviation": "IL",
+    "latitude": "40.63312490",
+    "longitude": "-89.39852830",
+    "timezones": ["CST (UTC-6)"],
+    "ianaTimezones": ["US/Central"],
+    "designatedArea": "Sangamon County",
+    "fipsStateCode": "17",
+    "fipsCountyCode": "167",
+    "combinedFIPS": "17167"
+  },
+  {
+    "name": "Indiana",
+    "abbreviation": "IN",
+    "latitude": "40.26719410",
+    "longitude": "-86.13490190",
+    "timezones": ["EST (UTC-5)", "CST (UTC-6)"],
+    "ianaTimezones": ["US/Eastern", "US/Central"],
+    "designatedArea": "Marion County",
+    "fipsStateCode": "18",
+    "fipsCountyCode": "097",
+    "combinedFIPS": "18097"
+  },
+  {
+    "name": "Iowa",
+    "abbreviation": "IA",
+    "latitude": "41.87800250",
+    "longitude": "-93.09770200",
+    "timezones": ["CST (UTC-6)"],
+    "ianaTimezones": ["US/Central"],
+    "designatedArea": "Polk County",
+    "fipsStateCode": "19",
+    "fipsCountyCode": "153",
+    "combinedFIPS": "19153"
+  },
+  {
+    "name": "Kansas",
+    "abbreviation": "KS",
+    "latitude": "39.01190200",
+    "longitude": "-98.48424650",
+    "timezones": ["CST (UTC-6)", "MST (UTC-07)"],
+    "ianaTimezones": ["US/Central", "US/Mountain"],
+    "designatedArea": "Shawnee County",
+    "fipsStateCode": "20",
+    "fipsCountyCode": "177",
+    "combinedFIPS": "20177"
+  },
+  {
+    "name": "Kentucky",
+    "abbreviation": "KY",
+    "latitude": "37.83933320",
+    "longitude": "-84.27001790",
+    "timezones": ["EST (UTC-5)", "CST (UTC-6)"],
+    "ianaTimezones": ["US/Eastern", "US/Central"],
+    "designatedArea": "Franklin County",
+    "fipsStateCode": "21",
+    "fipsCountyCode": "073",
+    "combinedFIPS": "21073"
+  },
+  {
+    "name": "Louisiana",
+    "abbreviation": "LA",
+    "latitude": "30.98429770",
+    "longitude": "-91.96233270",
+    "timezones": ["CST (UTC-6)"],
+    "ianaTimezones": ["US/Central"],
+    "designatedArea": "East Baton Rouge Parish",
+    "fipsStateCode": "22",
+    "fipsCountyCode": "033",
+    "combinedFIPS": "22033"
+  },
+  {
+    "name": "Maine",
+    "abbreviation": "ME",
+    "latitude": "45.25378300",
+    "longitude": "-69.44546890",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Kennebec County",
+    "fipsStateCode": "23",
+    "fipsCountyCode": "011",
+    "combinedFIPS": "23011"
+  },
+  {
+    "name": "Maryland",
+    "abbreviation": "MD",
+    "latitude": "39.04575490",
+    "longitude": "-76.64127120",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Anne Arundel County",
+    "fipsStateCode": "24",
+    "fipsCountyCode": "003",
+    "combinedFIPS": "24003"
+  },
+  {
+    "name": "Massachusetts",
+    "abbreviation": "MA",
+    "latitude": "42.40721070",
+    "longitude": "-71.38243740",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Suffolk County",
+    "fipsStateCode": "25",
+    "fipsCountyCode": "025",
+    "combinedFIPS": "25025"
+  },
+  {
+    "name": "Michigan",
+    "abbreviation": "MI",
+    "latitude": "44.31484430",
+    "longitude": "-85.60236430",
+    "timezones": ["EST (UTC-5)", "CST (UTC-6)"],
+    "ianaTimezones": ["US/Eastern", "US/Central"],
+    "designatedArea": "Ingham County",
+    "fipsStateCode": "26",
+    "fipsCountyCode": "065",
+    "combinedFIPS": "26065"
+  },
+  {
+    "name": "Minnesota",
+    "abbreviation": "MN",
+    "latitude": "46.72955300",
+    "longitude": "-94.68589980",
+    "timezones": ["CST (UTC-6)"],
+    "ianaTimezones": ["US/Central"],
+    "designatedArea": "Ramsey County",
+    "fipsStateCode": "27",
+    "fipsCountyCode": "123",
+    "combinedFIPS": "27123"
+  },
+  {
+    "name": "Mississippi",
+    "abbreviation": "MS",
+    "latitude": "32.35466790",
+    "longitude": "-89.39852830",
+    "timezones": ["CST (UTC-6)"],
+    "ianaTimezones": ["US/Central"],
+    "designatedArea": "Hinds County",
+    "fipsStateCode": "28",
+    "fipsCountyCode": "049",
+    "combinedFIPS": "28049"
+  },
+  {
+    "name": "Missouri",
+    "abbreviation": "MO",
+    "latitude": "37.96425290",
+    "longitude": "-91.83183340",
+    "timezones": ["CST (UTC-6)"],
+    "ianaTimezones": ["US/Central"],
+    "designatedArea": "Cole County",
+    "fipsStateCode": "29",
+    "fipsCountyCode": "051",
+    "combinedFIPS": "29051"
+  },
+  {
+    "name": "Montana",
+    "abbreviation": "MT",
+    "latitude": "46.87968220",
+    "longitude": "-110.36256580",
+    "timezones": ["MST (UTC-07)"],
+    "ianaTimezones": ["US/Mountain"],
+    "designatedArea": "Lewis and Clark County",
+    "fipsStateCode": "30",
+    "fipsCountyCode": "049",
+    "combinedFIPS": "30049"
+  },
+  {
+    "name": "Nebraska",
+    "abbreviation": "NE",
+    "latitude": "41.49253740",
+    "longitude": "-99.90181310",
+    "timezones": ["CST (UTC-6)", "MST (UTC-07)"],
+    "ianaTimezones": ["US/Central", "US/Mountain"],
+    "designatedArea": "Lancaster County",
+    "fipsStateCode": "31",
+    "fipsCountyCode": "109",
+    "combinedFIPS": "31109"
+  },
+  {
+    "name": "Nevada",
+    "abbreviation": "NV",
+    "latitude": "38.80260970",
+    "longitude": "-116.41938900",
+    "timezones": ["PST (UTC-8)", "MST (UTC-07)"],
+    "ianaTimezones": ["US/Pacific", "US/Mountain"],
+    "designatedArea": "Carson City",
+    "fipsStateCode": "32",
+    "fipsCountyCode": "510",
+    "combinedFIPS": "32510"
+  },
+  {
+    "name": "New Hampshire",
+    "abbreviation": "NH",
+    "latitude": "43.19385160",
+    "longitude": "-71.57239530",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Merrimack County",
+    "fipsStateCode": "33",
+    "fipsCountyCode": "013",
+    "combinedFIPS": "33013"
+  },
+  {
+    "name": "New Jersey",
+    "abbreviation": "NJ",
+    "latitude": "40.05832380",
+    "longitude": "-74.40566120",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Mercer County",
+    "fipsStateCode": "34",
+    "fipsCountyCode": "021",
+    "combinedFIPS": "34021"
+  },
+  {
+    "name": "New Mexico",
+    "abbreviation": "NM",
+    "latitude": "34.51994020",
+    "longitude": "-105.87009010",
+    "timezones": ["MST (UTC-07)"],
+    "ianaTimezones": ["US/Mountain"],
+    "designatedArea": "Santa Fe County",
+    "fipsStateCode": "35",
+    "fipsCountyCode": "049",
+    "combinedFIPS": "35049"
+  },
+  {
+    "name": "New York",
+    "abbreviation": "NY",
+    "latitude": "40.71277530",
+    "longitude": "-74.00597280",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Albany County",
+    "fipsStateCode": "36",
+    "fipsCountyCode": "001",
+    "combinedFIPS": "36001"
+  },
+  {
+    "name": "North Carolina",
+    "abbreviation": "NC",
+    "latitude": "35.75957310",
+    "longitude": "-79.01929970",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Wake County",
+    "fipsStateCode": "37",
+    "fipsCountyCode": "183",
+    "combinedFIPS": "37183"
+  },
+  {
+    "name": "North Dakota",
+    "abbreviation": "ND",
+    "latitude": "47.55149260",
+    "longitude": "-101.00201190",
+    "timezones": ["CST (UTC-6)", "MST (UTC-07)"],
+    "ianaTimezones": ["US/Central", "US/Mountain"],
+    "designatedArea": "Burleigh County",
+    "fipsStateCode": "38",
+    "fipsCountyCode": "015",
+    "combinedFIPS": "38015"
+  },
+  {
+    "name": "Ohio",
+    "abbreviation": "OH",
+    "latitude": "40.41728710",
+    "longitude": "-82.90712300",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Franklin County",
+    "fipsStateCode": "39",
+    "fipsCountyCode": "049",
+    "combinedFIPS": "39049"
+  },
+  {
+    "name": "Oklahoma",
+    "abbreviation": "OK",
+    "latitude": "35.46756020",
+    "longitude": "-97.51642760",
+    "timezones": ["CST (UTC-6)"],
+    "ianaTimezones": ["US/Central"],
+    "designatedArea": "Oklahoma County",
+    "fipsStateCode": "40",
+    "fipsCountyCode": "109",
+    "combinedFIPS": "40109"
+  },
+  {
+    "name": "Oregon",
+    "abbreviation": "OR",
+    "latitude": "43.80413340",
+    "longitude": "-120.55420120",
+    "timezones": ["PST (UTC-8)", "MST (UTC-07)"],
+    "ianaTimezones": ["US/Pacific", "US/Mountain"],
+    "designatedArea": "Marion County",
+    "fipsStateCode": "41",
+    "fipsCountyCode": "047",
+    "combinedFIPS": "41047"
+  },
+  {
+    "name": "Pennsylvania",
+    "abbreviation": "PA",
+    "latitude": "41.20332160",
+    "longitude": "-77.19452470",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Dauphin County",
+    "fipsStateCode": "42",
+    "fipsCountyCode": "043",
+    "combinedFIPS": "42043"
+  },
+  {
+    "name": "Rhode Island",
+    "abbreviation": "RI",
+    "latitude": "41.58009450",
+    "longitude": "-71.47742910",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Providence County",
+    "fipsStateCode": "44",
+    "fipsCountyCode": "007",
+    "combinedFIPS": "44007"
+  },
+  {
+    "name": "South Carolina",
+    "abbreviation": "SC",
+    "latitude": "33.83608100",
+    "longitude": "-81.16372450",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Richland County",
+    "fipsStateCode": "45",
+    "fipsCountyCode": "079",
+    "combinedFIPS": "45079"
+  },
+  {
+    "name": "South Dakota",
+    "abbreviation": "SD",
+    "latitude": "43.96951480",
+    "longitude": "-99.90181310",
+    "timezones": ["CST (UTC-6)", "MST (UTC-07)"],
+    "ianaTimezones": ["US/Central", "US/Mountain"],
+    "designatedArea": "Hughes County",
+    "fipsStateCode": "46",
+    "fipsCountyCode": "065",
+    "combinedFIPS": "46065"
+  },
+  {
+    "name": "Tennessee",
+    "abbreviation": "TN",
+    "latitude": "35.51749130",
+    "longitude": "-86.58044730",
+    "timezones": ["CST (UTC-6)", "EST (UTC-5)"],
+    "ianaTimezones": ["US/Central", "US/Eastern"],
+    "designatedArea": "Davidson County",
+    "fipsStateCode": "47",
+    "fipsCountyCode": "037",
+    "combinedFIPS": "47037"
+  },
+  {
+    "name": "Texas",
+    "abbreviation": "TX",
+    "latitude": "31.96859880",
+    "longitude": "-99.90181310",
+    "timezones": ["CST (UTC-6)", "MST (UTC-07)"],
+    "ianaTimezones": ["US/Central", "US/Mountain"],
+    "designatedArea": "Travis County",
+    "fipsStateCode": "48",
+    "fipsCountyCode": "453",
+    "combinedFIPS": "48453"
+  },
+  {
+    "name": "Utah",
+    "abbreviation": "UT",
+    "latitude": "39.32098010",
+    "longitude": "-111.09373110",
+    "timezones": ["MST (UTC-07)"],
+    "ianaTimezones": ["US/Mountain"],
+    "designatedArea": "Salt Lake County",
+    "fipsStateCode": "49",
+    "fipsCountyCode": "035",
+    "combinedFIPS": "49035"
+  },
+  {
+    "name": "Vermont",
+    "abbreviation": "VT",
+    "latitude": "44.55880280",
+    "longitude": "-72.57784150",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Washington County",
+    "fipsStateCode": "50",
+    "fipsCountyCode": "023",
+    "combinedFIPS": "50023"
+  },
+  {
+    "name": "Virginia",
+    "abbreviation": "VA",
+    "latitude": "37.43157340",
+    "longitude": "-78.65689420",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Richmond City",
+    "fipsStateCode": "51",
+    "fipsCountyCode": "760",
+    "combinedFIPS": "51760"
+  },
+  {
+    "name": "Washington",
+    "abbreviation": "WA",
+    "latitude": "47.75107410",
+    "longitude": "-120.74013850",
+    "timezones": ["PST (UTC-8)"],
+    "ianaTimezones": ["US/Pacific"],
+    "designatedArea": "Thurston County",
+    "fipsStateCode": "53",
+    "fipsCountyCode": "067",
+    "combinedFIPS": "53067"
+  },
+  {
+    "name": "West Virginia",
+    "abbreviation": "WV",
+    "latitude": "38.59762620",
+    "longitude": "-80.45490260",
+    "timezones": ["EST (UTC-5)"],
+    "ianaTimezones": ["US/Eastern"],
+    "designatedArea": "Kanawha County",
+    "fipsStateCode": "54",
+    "fipsCountyCode": "039",
+    "combinedFIPS": "54039"
+  },
+  {
+    "name": "Wisconsin",
+    "abbreviation": "WI",
+    "latitude": "43.78443970",
+    "longitude": "-88.78786780",
+    "timezones": ["CST (UTC-6)"],
+    "ianaTimezones": ["US/Central"],
+    "designatedArea": "Dane County",
+    "fipsStateCode": "55",
+    "fipsCountyCode": "025",
+    "combinedFIPS": "55025"
+  },
+  {
+    "name": "Wyoming",
+    "abbreviation": "WY",
+    "latitude": "43.07596780",
+    "longitude": "-107.29028390",
+    "timezones": ["MST (UTC-07)"],
+    "ianaTimezones": ["US/Mountain"],
+    "designatedArea": "Laramie County",
+    "fipsStateCode": "56",
+    "fipsCountyCode": "021",
+    "combinedFIPS": "56021"
+  }
+]

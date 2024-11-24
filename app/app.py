@@ -13,46 +13,45 @@ states_json = "states.json"
 with open(states_json, "r", encoding="utf-8") as file:
     states = json.load(file)
 
-def mount_charts_data(selected_year, selected_incident, selected_state):
+def convert_celsius_to_fahrenheit(temp):
+    return (temp * 9/5) + 32
+
+def mount_charts_data(selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp):
+    state_data = next((state for state in states if state["abbreviation"] == selected_state), {})
+
     data_to_predict = {
         "state": selected_state,
         "declarationType": "DR",
-        "designatedArea": "Some Area",
-        "fipsStateCode": 48,
-        "fipsCountyCode": "001",
-        "combinedFIPS": 48001,
+        "designatedArea": state_data.get("designatedArea"),
+        "fipsStateCode": state_data.get("fipsStateCode"),
+        "fipsCountyCode": state_data.get("fipsCountyCode"),
+        "combinedFIPS": state_data.get("combinedFIPS"),
         "year": int(selected_year),
-        "Month": 8,
-        "Precipitation": 12.3,
-        "Cooling_Days": 45,
-        "Heating_Days": 10,
-        "AverageTemp": 22.5,
+        "Month": int(selected_month),
+        "Precipitation": precipitation,
+        "Cooling_Days": cooling_days,
+        "Heating_Days": heating_days,
+        "AverageTemp": convert_celsius_to_fahrenheit(temp=average_temp),
         "ihProgramDeclared": 1,
         "iaProgramDeclared": 0,
         "paProgramDeclared": 1,
         "hmProgramDeclared": 0,
-        "incidentType": selected_incident
     }
     
     url = "http://127.0.0.1:5000/api/v1/model/predict"
     request = requests.request("POST", url, headers={'Content-Type': 'application/json'}, json=data_to_predict)
     data = request.json()
 
-    stateData = next((state for state in states if state["abbreviation"] == data_to_predict["state"]), {})
-
     aggregated = {
         "state": [data_to_predict["state"]],
         "declarationType": [data_to_predict["declarationType"]],
-        "Tipo de Incidente": [data_to_predict["incidentType"]],
         "Precipitação": [data_to_predict["Precipitation"]],
         "Cooling_Days": [data_to_predict["Cooling_Days"]],
         "Heating_Days": [data_to_predict["Heating_Days"]],
-        "Temperatura Média": [data_to_predict["AverageTemp"]],
-        "Real": [data_to_predict["incidentType"]],
-        "Predicted": [data_to_predict["incidentType"]],
+        "Temperatura Média": [average_temp],
         "Year": [data_to_predict["year"]],
-        "Latitude": [stateData.get("latitude")],  
-        "Longitude": [stateData.get("longitude")],
+        "Latitude": [state_data.get("latitude")],  
+        "Longitude": [state_data.get("longitude")],
         "Predição": [data.get("prediction")]
     }
 
@@ -73,25 +72,46 @@ app.layout = html.Div([
         value=None,
         placeholder="Selecione o ano"
     ),
-    
+
     dcc.Dropdown(
-        id="incident-dropdown",
-        options=[
-            {"label": "Severe Storm", "value": "Severe Storm"},
-            {"label": "Hurricane", "value": "Hurricane"},
-            {"label": "Tornado", "value": "Tornado"},
-            {"label": "Wildfire", "value": "Wildfire"}
-        ],
+        id="month-dropdown",
+        options=[{"label": month, "value": month} for month in range(1, 13)],
         value=None,
-        placeholder="Selecione o tipo de incidente"
+        placeholder="Selecione o mês"
     ),
-    
+
     dcc.Dropdown(
         id="state-dropdown",
         options=[{"label": state["name"], "value": state["abbreviation"]} for state in states],
         value=None,
         placeholder="Selecione o estado"
     ),
+
+    dcc.Input(
+        id="precipitation",
+        type="number",
+        placeholder="Precipitação (mm)"
+    ),
+
+    dcc.Input(
+        id="cooling_days",
+        type="number",
+        placeholder="Dias frios"
+    ),
+
+    dcc.Input(
+        id="heating_days",
+        type="number",
+        placeholder="Dias quentes"
+    ),
+
+    dcc.Input(
+        id="average_temp",
+        type="number",
+        placeholder="Temperatura média (°C)"
+    ),
+
+    html.Button("Gerar Análise Preditiva", id="submit-button", n_clicks=0),
     
     dcc.Graph(id="incident-map")
 ])
@@ -99,20 +119,27 @@ app.layout = html.Div([
 @app.callback(
     [Output("incident-map", "figure")],
     [
+        Input("submit-button", "n_clicks")
+    ],
+    [
         Input("year-dropdown", "value"),
-        Input("incident-dropdown", "value"),
-        Input("state-dropdown", "value")
+        Input("month-dropdown", "value"),
+        Input("state-dropdown", "value"),
+        Input("precipitation", "value"),
+        Input("cooling_days", "value"),
+        Input("heating_days", "value"),
+        Input("average_temp", "value")
     ]
 )
-def update_graphs(selected_year, selected_incident, selected_state):
-    if not all([selected_year, selected_incident, selected_state]):
+def update_graphs(n_clicks, selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp):
+    if n_clicks == 0 or not all([selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp]):
         empty_fig = px.scatter_geo(
-            title="Aguardando seleção de todos os campos...",
+            title="Aguardando clique no botão ou seleção de todos os campos...",
             scope="usa"
         )
-        return empty_fig 
+        return [empty_fig]
 
-    df = mount_charts_data(selected_year, selected_incident, selected_state)
+    df = mount_charts_data(selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp)
 
     filtered_df = df[df["Year"] == int(selected_year)] 
 
@@ -120,7 +147,7 @@ def update_graphs(selected_year, selected_incident, selected_state):
         filtered_df,
         lat="Latitude",
         lon="Longitude",
-        color="Tipo de Incidente",
+        color="Predição",
         size="Precipitação",
         hover_name="state",
         hover_data={"Predição": True, "Temperatura Média": True, "Precipitação": True},
@@ -130,6 +157,8 @@ def update_graphs(selected_year, selected_incident, selected_state):
     
     incident_map.update_layout(geo=dict(showland=True, landcolor="lightgray"))
     
+    n_clicks = 0
+
     return [incident_map]
 
 if __name__ == "__main__":
