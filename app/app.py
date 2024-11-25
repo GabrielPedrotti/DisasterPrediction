@@ -1,3 +1,4 @@
+# app.py
 import dash
 import dash_bootstrap_components as dbc
 from dash import dcc, html, Input, Output, State
@@ -17,13 +18,8 @@ def convert_celsius_to_fahrenheit(temp):
 
 def get_db_data():
     url = "http://127.0.0.1:5000/api/v1/disaster/all"
-    
     request = requests.request("GET", url)
-    
     data = request.json()
-    
-    print('data', data[0])
-    
     return data
 
 def mount_charts_data(selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp):
@@ -69,7 +65,13 @@ def mount_charts_data(selected_year, selected_month, selected_state, precipitati
     return value
 
 current_year = datetime.now().year
-years = [str(year) for year in range(current_year, current_year + 6)] 
+years = [str(year) for year in range(current_year, current_year + 6)]
+
+db_data = get_db_data()
+df_db = pd.DataFrame(db_data)
+
+df_db['Month'] = df_db['Month'].astype(int)
+df_db['year'] = df_db['year'].astype(int)
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 
@@ -150,20 +152,41 @@ app.layout = dbc.Container([
                     ], className='mt-3'),
                     dbc.Button("Gerar Análise Preditiva", id="submit-button", color="primary", className='mt-4 w-100'),
                 ])
-            ])
-        ], width=12, lg=6),
+            ], className='h-100')
+        ], width=12, lg=4, className='h-100'),
         dbc.Col([
             dbc.Card([
                 dbc.CardBody([
                     dcc.Graph(id="incident-map")
                 ])
+            ], className='h-100')
+        ], width=12, lg=8, className='h-100')
+    ], className='align-items-stretch'),
+    dbc.Row([
+        dbc.Col(html.H3("Algumas curiosidades do dataset", className='text-center text-primary mt-4 mb-2'), width=12)
+    ]),
+    dbc.Row([
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                    dcc.Graph(id="incidents-per-month")
+                ])
             ])
-        ], width=12, lg=6)
-    ])
+        ], width=12, lg=6),
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                    dcc.Graph(id="incident-type-distribution")
+                ])
+            ])
+        ], width=12, lg=6),
+    ], className='mt-4')
 ], fluid=True)
 
 @app.callback(
     Output("incident-map", "figure"),
+    Output("incidents-per-month", "figure"),
+    Output("incident-type-distribution", "figure"),
     Input("submit-button", "n_clicks"),
     State("year-dropdown", "value"),
     State("month-dropdown", "value"),
@@ -175,34 +198,50 @@ app.layout = dbc.Container([
 )
 def update_graphs(n_clicks, selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp):
     if n_clicks is None or not all([selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp]):
-        get_db_data()
         empty_fig = px.scatter_geo(
             title="Aguardando clique no botão...",
             scope="usa",
             height=386
         )
-        return empty_fig
+    else:
+        df = mount_charts_data(selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp)
+        filtered_df = df[df["Year"] == int(selected_year)] 
 
-    df = mount_charts_data(selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp)
+        empty_fig = px.scatter_geo(
+            filtered_df,
+            lat="Latitude",
+            lon="Longitude",
+            color="Predição",
+            size="Precipitação",
+            hover_name="state",
+            hover_data={"Predição": True, "Temperatura Média": True, "Precipitação": True},
+            title=f"Predição de Incidentes Naturais nos EUA ({selected_year})",
+            scope="usa",
+            height=386
+        )
+        empty_fig.update_layout(geo=dict(showland=True, landcolor="lightgray"))
 
-    filtered_df = df[df["Year"] == int(selected_year)] 
-
-    incident_map = px.scatter_geo(
-        filtered_df,
-        lat="Latitude",
-        lon="Longitude",
-        color="Predição",
-        size="Precipitação",
-        hover_name="state",
-        hover_data={"Predição": True, "Temperatura Média": True, "Precipitação": True},
-        title=f"Incidentes Naturais nos EUA ({selected_year})",
-        scope="usa",
-        height=386
+    incidents_per_month = df_db.groupby('Month').size().reset_index(name='Count')
+    bar_fig = px.bar(
+        incidents_per_month,
+        x='Month',
+        y='Count',
+        title='Número de Incidentes por Mês',
+        labels={'Month': 'Mês', 'Count': 'Número de Incidentes'}
     )
-    
-    incident_map.update_layout(geo=dict(showland=True, landcolor="lightgray"))
 
-    return incident_map
+    incident_type_distribution = df_db['incidentType'].value_counts().reset_index(name='count')
+    incident_type_distribution.rename(columns={'index': 'incidentType'}, inplace=True)
+
+    pie_fig = px.pie(
+        incident_type_distribution,
+        values='count',
+        names='incidentType',
+        title='Distribuição de Tipos de Incidentes',
+        labels={'incidentType': 'Tipo de Incidente', 'count': 'Número de Incidentes'}
+    )
+
+    return empty_fig, bar_fig, pie_fig
 
 if __name__ == "__main__":
     app.run_server(debug=True)
