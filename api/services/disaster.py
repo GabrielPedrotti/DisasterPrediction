@@ -10,7 +10,8 @@ CORS(disaster)
 
 @disaster.route('/all', methods=['GET'])
 def get_all_disasters():
-    disasters = db.disaster.find()
+    limit = 2000
+    disasters = db.disaster.find(limit=limit)
     return jsonify([disaster for disaster in disasters])
 
 @disaster.route('/<id>', methods=['GET'])

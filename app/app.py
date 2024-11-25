@@ -1,12 +1,11 @@
 import dash
-from dash import dcc, html
-from dash.dependencies import Input, Output
+import dash_bootstrap_components as dbc
+from dash import dcc, html, Input, Output, State
 import plotly.express as px
 import pandas as pd
 import requests
 from datetime import datetime
 import json
-
 
 states_json = "states.json"
 
@@ -15,6 +14,17 @@ with open(states_json, "r", encoding="utf-8") as file:
 
 def convert_celsius_to_fahrenheit(temp):
     return (temp * 9/5) + 32
+
+def get_db_data():
+    url = "http://127.0.0.1:5000/api/v1/disaster/all"
+    
+    request = requests.request("GET", url)
+    
+    data = request.json()
+    
+    print('data', data[0])
+    
+    return data
 
 def mount_charts_data(selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp):
     state_data = next((state for state in states if state["abbreviation"] == selected_state), {})
@@ -61,83 +71,117 @@ def mount_charts_data(selected_year, selected_month, selected_state, precipitati
 current_year = datetime.now().year
 years = [str(year) for year in range(current_year, current_year + 6)] 
 
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 
-app.layout = html.Div([
-    html.H1("Análise de Incidentes Naturais nos EUA"),
-    
-    dcc.Dropdown(
-        id="year-dropdown",
-        options=[{"label": year, "value": year} for year in years],
-        value=None,
-        placeholder="Selecione o ano"
-    ),
-
-    dcc.Dropdown(
-        id="month-dropdown",
-        options=[{"label": month, "value": month} for month in range(1, 13)],
-        value=None,
-        placeholder="Selecione o mês"
-    ),
-
-    dcc.Dropdown(
-        id="state-dropdown",
-        options=[{"label": state["name"], "value": state["abbreviation"]} for state in states],
-        value=None,
-        placeholder="Selecione o estado"
-    ),
-
-    dcc.Input(
-        id="precipitation",
-        type="number",
-        placeholder="Precipitação (mm)"
-    ),
-
-    dcc.Input(
-        id="cooling_days",
-        type="number",
-        placeholder="Dias frios"
-    ),
-
-    dcc.Input(
-        id="heating_days",
-        type="number",
-        placeholder="Dias quentes"
-    ),
-
-    dcc.Input(
-        id="average_temp",
-        type="number",
-        placeholder="Temperatura média (°C)"
-    ),
-
-    html.Button("Gerar Análise Preditiva", id="submit-button", n_clicks=0),
-    
-    dcc.Graph(id="incident-map")
-])
+app.layout = dbc.Container([
+    dbc.Row([
+        dbc.Col(html.H1("Análise de Incidentes Naturais nos EUA", className='text-center text-primary mb-4'), width=12)
+    ]),
+    dbc.Row([
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.Label("Ano"),
+                            dcc.Dropdown(
+                                id="year-dropdown",
+                                options=[{"label": year, "value": year} for year in years],
+                                value=None,
+                                placeholder="Selecione o ano"
+                            )
+                        ], width=6),
+                        dbc.Col([
+                            dbc.Label("Mês"),
+                            dcc.Dropdown(
+                                id="month-dropdown",
+                                options=[{"label": month, "value": month} for month in range(1, 13)],
+                                value=None,
+                                placeholder="Selecione o mês"
+                            )
+                        ], width=6),
+                    ]),
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.Label("Estado"),
+                            dcc.Dropdown(
+                                id="state-dropdown",
+                                options=[{"label": state["name"], "value": state["abbreviation"]} for state in states],
+                                value=None,
+                                placeholder="Selecione o estado"
+                            )
+                        ], width=12),
+                    ], className='mt-3'),
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.Label("Precipitação (mm)"),
+                            dbc.Input(
+                                id="precipitation",
+                                type="number",
+                                placeholder="Ex: 50.5"
+                            )
+                        ], width=6),
+                        dbc.Col([
+                            dbc.Label("Temperatura Média (°C)"),
+                            dbc.Input(
+                                id="average_temp",
+                                type="number",
+                                placeholder="Ex: 22.5"
+                            )
+                        ], width=6),
+                    ], className='mt-3'),
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.Label("Dias Quentes"),
+                            dbc.Input(
+                                id="heating_days",
+                                type="number",
+                                placeholder="Ex: 10"
+                            )
+                        ], width=6),
+                        dbc.Col([
+                            dbc.Label("Dias Frios"),
+                            dbc.Input(
+                                id="cooling_days",
+                                type="number",
+                                placeholder="Ex: 15"
+                            )
+                        ], width=6),
+                    ], className='mt-3'),
+                    dbc.Button("Gerar Análise Preditiva", id="submit-button", color="primary", className='mt-4 w-100'),
+                ])
+            ])
+        ], width=12, lg=6),
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                    dcc.Graph(id="incident-map")
+                ])
+            ])
+        ], width=12, lg=6)
+    ])
+], fluid=True)
 
 @app.callback(
-    [Output("incident-map", "figure")],
-    [
-        Input("submit-button", "n_clicks")
-    ],
-    [
-        Input("year-dropdown", "value"),
-        Input("month-dropdown", "value"),
-        Input("state-dropdown", "value"),
-        Input("precipitation", "value"),
-        Input("cooling_days", "value"),
-        Input("heating_days", "value"),
-        Input("average_temp", "value")
-    ]
+    Output("incident-map", "figure"),
+    Input("submit-button", "n_clicks"),
+    State("year-dropdown", "value"),
+    State("month-dropdown", "value"),
+    State("state-dropdown", "value"),
+    State("precipitation", "value"),
+    State("cooling_days", "value"),
+    State("heating_days", "value"),
+    State("average_temp", "value")
 )
 def update_graphs(n_clicks, selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp):
-    if n_clicks == 0 or not all([selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp]):
+    if n_clicks is None or not all([selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp]):
+        get_db_data()
         empty_fig = px.scatter_geo(
-            title="Mapa dos Estados Unidos:",
-            scope="usa"
+            title="Aguardando clique no botão...",
+            scope="usa",
+            height=386
         )
-        return [empty_fig]
+        return empty_fig
 
     df = mount_charts_data(selected_year, selected_month, selected_state, precipitation, cooling_days, heating_days, average_temp)
 
@@ -152,14 +196,13 @@ def update_graphs(n_clicks, selected_year, selected_month, selected_state, preci
         hover_name="state",
         hover_data={"Predição": True, "Temperatura Média": True, "Precipitação": True},
         title=f"Incidentes Naturais nos EUA ({selected_year})",
-        scope="usa"
+        scope="usa",
+        height=386
     )
     
     incident_map.update_layout(geo=dict(showland=True, landcolor="lightgray"))
-    
-    n_clicks = 0
 
-    return [incident_map]
+    return incident_map
 
 if __name__ == "__main__":
     app.run_server(debug=True)
